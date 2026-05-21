@@ -7,26 +7,9 @@ import './globals.css'
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'VILDMARK | Go Further',
-  description: 'High-performance outdoor gear engineered for the modern explorer. Lightweight, durable, adventure-ready.',
+  title: 'Alpha Car Service | Profesionálny autoservis v Bratislave',
+  description: 'Profesionálny autoservis v Bratislave - Vrakuňa. Pneuservis, servis klimatizácie, príprava na STK/EK, rýchloservis pre taxíky. Hodnotenie 4.9/5 od Zlatá Firma.',
   generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
 }
 
 export default function RootLayout({
@@ -35,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="sk" className="bg-background">
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics />

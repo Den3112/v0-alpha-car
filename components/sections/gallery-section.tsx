@@ -12,14 +12,14 @@ export function GallerySection() {
   const lastScrollRef = useRef(0);
 
   const images = [
-    { src: "/images/bottle-bike.png", alt: "Thermal bottle on bike" },
-    { src: "/images/bottle-lake.png", alt: "Thermal bottle by lake" },
-    { src: "/images/bottle-water.png", alt: "Thermal bottle in water" },
-    { src: "/images/bottle-stream.png", alt: "Thermal bottle by stream" },
-    { src: "/images/bottle-fire.png", alt: "Thermal bottle by fire" },
-    { src: "/images/bottle-snow.png", alt: "Thermal bottle in snow" },
-    { src: "/images/bottle-mountain.png", alt: "Thermal bottle on mountain" },
-    { src: "/images/bottle-canyon.png", alt: "Thermal bottle at canyon" },
+    { src: "/images/gallery-1.jpg", alt: "Oprava motora" },
+    { src: "/images/gallery-2.jpg", alt: "Geometria a vyváženie kolies" },
+    { src: "/images/gallery-3.jpg", alt: "Moderná autoservisná dielňa" },
+    { src: "/images/gallery-4.jpg", alt: "Oprava brzdového systému" },
+    { src: "/images/gallery-5.jpg", alt: "Pneuservis a montáž pneumatík" },
+    { src: "/images/gallery-6.jpg", alt: "Servis elektromobilov" },
+    { src: "/images/service-diagnostics.jpg", alt: "Počítačová diagnostika" },
+    { src: "/images/service-ac.jpg", alt: "Servis klimatizácie" },
   ];
 
   // Calculate section height based on content width

@@ -8,16 +8,17 @@ export function TestimonialsSection() {
       {/* Large Text Statement */}
       <div className="px-6 py-24 md:px-12 md:py-32 lg:px-20 lg:py-40">
         <p className="mx-auto max-w-5xl text-2xl leading-relaxed text-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug">
-          Alpine & Forest accessories combine aerospace-grade materials with cutting-edge technology — 
-          designed for explorers who refuse to compromise on quality or performance in the wild.
+          Váš autoservis v Bratislave — kde profesionalita,
+          rýchlosť a férovosť nie sú len sľuby,
+          ale každodenná realita.
         </p>
       </div>
 
       {/* About Image */}
       <div className="relative aspect-[16/9] w-full">
         <Image
-          src="/images/3d4046a0-b072-4b07-941f-9141ee3ed4a7.png"
-          alt="Mountain peaks at sunrise"
+          src="/images/about-shop.jpg"
+          alt="Alpha Car Service - exteriér autoservisu v Bratislave"
           fill
           className="object-cover"
         />

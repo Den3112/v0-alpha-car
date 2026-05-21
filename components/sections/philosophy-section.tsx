@@ -65,55 +65,55 @@ export function PhilosophySection() {
               className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
               style={{ opacity: titleOpacity }}
             >
-              <h2 className="text-[12vw] font-medium leading-[0.95] tracking-tighter text-foreground md:text-[10vw] lg:text-[8vw] text-center px-6">
-                Meet Alpine & Forest.
+              <h2 className="text-[10vw] font-medium leading-[0.95] tracking-tighter text-foreground md:text-[8vw] lg:text-[6vw] text-center px-6">
+                Pneuservis & Klimatizácia.
               </h2>
             </div>
 
             {/* Product Grid */}
             <div className="relative z-10 grid grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-12 lg:px-20">
-              {/* Alpine Image - comes from left */}
-              <div 
+              {/* Pneuservis Image - comes from left */}
+              <div
                 className="relative aspect-[4/3] overflow-hidden rounded-2xl"
                 style={{
                   transform: `translate3d(${alpineTranslateX}%, 0, 0)`,
                   WebkitTransform: `translate3d(${alpineTranslateX}%, 0, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <Image
-                  src="/images/product-backpack.png"
-                  alt="V1 Expedition Backpack in alpine setting"
+                  src="/images/service-tires.jpg"
+                  alt="Pneuservis a Runflat do 22"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Alpine $299
+                    Pneuservis a Runflat do 22&quot;
                   </span>
                 </div>
               </div>
 
-              {/* Forest Image - comes from right */}
-              <div 
+              {/* Klimatizácia Image - comes from right */}
+              <div
                 className="relative aspect-[4/3] overflow-hidden rounded-2xl"
                 style={{
                   transform: `translate3d(${forestTranslateX}%, 0, 0)`,
                   WebkitTransform: `translate3d(${forestTranslateX}%, 0, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
                 }}
               >
                 <Image
-                  src="/images/02cdc426-dff4-4dff-b131-1b134c3699b5.png"
-                  alt="V1 Thermal mug in forest setting"
+                  src="/images/service-ac.jpg"
+                  alt="Servis klimatizácie"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Forest $199
+                    Servis klimatizácie
                   </span>
                 </div>
               </div>
@@ -126,11 +126,11 @@ export function PhilosophySection() {
       <div className="px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-36 lg:pb-14">
         <div className="text-center">
           <p className="text-xs uppercase tracking-widest text-muted-foreground">
-            First generation
+            Naše služby
           </p>
           <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
-            Alpine & Forest are high-tech outdoor accessories designed for modern adventurers. 
-            Lightweight, durable, and engineered for extreme conditions.
+            Komplexný autoservis pre osobné vozidlá, SUV, taxíky a firemné flotily.
+            Rýchle termíny, odborný prístup, transparentné ceny.
           </p>
         </div>
       </div>

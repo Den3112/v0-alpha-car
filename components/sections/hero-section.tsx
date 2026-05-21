@@ -3,30 +3,30 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const word = "EVASION";
+const word = "ALPHA";
 
 const sideImages = [
   {
-    src: "https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1000",
-    alt: "Mountain hiking adventure",
+    src: "/images/side-1.jpg",
+    alt: "Kontrola vozidla na zdviháku",
     position: "left",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?q=80&w=1000",
-    alt: "Camping under stars",
+    src: "/images/side-2.jpg",
+    alt: "Výmena kolies",
     position: "left",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1533873984035-25970ab07461?q=80&w=1000",
-    alt: "Forest exploration",
+    src: "/images/side-3.jpg",
+    alt: "Kontrola brzdového systému",
     position: "right",
     span: 1,
   },
   {
-    src: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?q=80&w=1000",
-    alt: "Lake camping view",
+    src: "/images/side-4.jpg",
+    alt: "Kontrola motora",
     position: "right",
     span: 1,
   },
@@ -126,8 +126,8 @@ export function HeroSection() {
               }}
             >
               <Image
-                src="/images/hero-main.png"
-                alt="Mountain landscape with camping tent at sunset"
+                src="/images/autoservice-hero.jpg"
+                alt="Profesionálny autoservis Alpha Car Service v Bratislave"
                 fill
                 className="object-cover"
                 priority
@@ -195,10 +195,21 @@ export function HeroSection() {
       {/* Tagline Section */}
       <div className="px-6 pt-32 pb-28 md:pt-48 md:px-12 md:pb-36 lg:px-20 lg:pt-56 lg:pb-44">
         <p className="mx-auto max-w-2xl text-center text-2xl leading-relaxed text-muted-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug">
-          Lightweight, durable
+          Profesionálny autoservis
           <br />
-          and adventure-ready.
+          v Bratislave.
         </p>
+        <p className="mx-auto mt-4 max-w-lg text-center text-lg leading-relaxed text-muted-foreground">
+          Говорим на вашем языке
+        </p>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="#book"
+            className="rounded-full bg-foreground px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+          >
+            Objednať termín
+          </a>
+        </div>
       </div>
     </section>
   );

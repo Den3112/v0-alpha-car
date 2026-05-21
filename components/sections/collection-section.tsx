@@ -1,128 +1,105 @@
 "use client";
 
-import { FadeImage } from "@/components/fade-image";
+import { Star } from "lucide-react";
 
-const accessories = [
+const reviews = [
   {
     id: 1,
-    name: "Wireless Charging Stand",
-    description: "Induction charging dock for effortless power",
-    price: "$89",
-    image: "/images/accessory-charger.png",
+    name: "Igor K.",
+    text: "Rýchla výmena pneumatík, priateľský personál. Hovorili aj po rusky, čo veľmi pomohlo.",
+    rating: 5,
   },
   {
     id: 2,
-    name: "Protective Silicone Sleeve",
-    description: "Textured grip sleeve for enhanced durability",
-    price: "$45",
-    image: "/images/accessory-sleeve.png",
+    name: "Mária H.",
+    text: "Výborný servis klimatizácie. Prišla som bez termínu a za hodinu som odišla spokojná.",
+    rating: 5,
   },
   {
     id: 3,
-    name: "Carbon Fiber Bike Mount",
-    description: "Ultra-light mounting system for cycling",
-    price: "$129",
-    image: "/images/accessory-bike-mount.png",
+    name: "Tomáš B.",
+    text: "Pripravili mi auto na STK bez problémov. Profesionálny prístup, férové ceny.",
+    rating: 5,
   },
   {
     id: 4,
-    name: "Premium Carry Strap",
-    description: "Adjustable strap with quick-release clips",
-    price: "$39",
-    image: "/images/accessory-strap.png",
+    name: "Alexei S.",
+    text: "Отличный сервис! Персонал говорит по-русски. Быстро и качественно поменяли колёса.",
+    rating: 5,
   },
   {
     id: 5,
-    name: "Carabiner Clip System",
-    description: "Secure attachment for hands-free carrying",
-    price: "$29",
-    image: "/images/accessory-carabiner.png",
+    name: "Petra M.",
+    text: "Rýchloservis pre taxikárov funguje skvelo. Sme tam pravidelne s celou flotilou.",
+    rating: 5,
   },
   {
     id: 6,
-    name: "Bluetooth Speaker Base",
-    description: "High-fidelity audio dock with grip stabilizers",
-    price: "$149",
-    image: "/images/accessory-speaker-base.png",
+    name: "Michal D.",
+    text: "Profesionálna diagnostika, presná identifikácia problému. Odporúčam každému.",
+    rating: 5,
   },
 ];
 
 export function CollectionSection() {
   return (
-    <section id="accessories" className="bg-background">
-      {/* Section Title */}
-      <div className="px-6 py-20 md:px-12 lg:px-20 md:py-10">
-        <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl">
-          Essential Accessories
-        </h2>
+    <section id="contact" className="bg-background">
+      {/* Trust Header */}
+      <div className="px-6 py-20 md:px-12 lg:px-20 md:py-28">
+        <div className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Zlatá Firma</p>
+            <h2 className="mt-4 text-3xl font-medium tracking-tight text-foreground md:text-4xl">
+              Hodnotenie 4.9/5
+            </h2>
+            <div className="mt-3 flex items-center gap-1.5">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star key={star} size={20} className="fill-foreground text-foreground" />
+              ))}
+              <span className="ml-2 text-sm text-muted-foreground">od Zlatá Firma</span>
+            </div>
+          </div>
+          <p className="max-w-xs text-sm text-muted-foreground leading-relaxed">
+            Stovky spokojných zákazníkov hodnotia naše služby na Zlatá Firma.
+            Ich dôvera je naša najväčšia odmena.
+          </p>
+        </div>
       </div>
 
-      {/* Accessories Grid/Carousel */}
+      {/* Reviews Grid/Carousel */}
       <div className="pb-24">
         {/* Mobile: Horizontal Carousel */}
         <div className="flex gap-6 overflow-x-auto px-6 pb-4 md:hidden snap-x snap-mandatory scrollbar-hide">
-          {accessories.map((accessory) => (
-            <div key={accessory.id} className="group flex-shrink-0 w-[75vw] snap-center">
-              {/* Image */}
-              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-secondary">
-                <FadeImage
-                  src={accessory.image || "/placeholder.svg"}
-                  alt={accessory.name}
-                  fill
-                  className="object-cover group-hover:scale-105"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="py-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium leading-snug text-foreground">
-                      {accessory.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {accessory.description}
-                    </p>
-                  </div>
-                  <span className="text-lg font-medium text-foreground">
-                    {accessory.price}
-                  </span>
+          {reviews.map((review) => (
+            <div key={review.id} className="flex-shrink-0 w-[80vw] snap-center">
+              <div className="rounded-2xl border border-border bg-secondary/30 p-6">
+                <div className="flex items-center gap-1 mb-4">
+                  {Array.from({ length: review.rating }).map((_, i) => (
+                    <Star key={i} size={14} className="fill-foreground text-foreground" />
+                  ))}
                 </div>
+                <p className="text-sm leading-relaxed text-foreground mb-4">
+                  &ldquo;{review.text}&rdquo;
+                </p>
+                <p className="text-xs font-medium text-muted-foreground">{review.name}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Desktop: Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-8 md:px-12 lg:px-20">
-          {accessories.map((accessory) => (
-            <div key={accessory.id} className="group">
-              {/* Image */}
-              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-secondary">
-                <FadeImage
-                  src={accessory.image || "/placeholder.svg"}
-                  alt={accessory.name}
-                  fill
-                  className="object-cover group-hover:scale-105"
-                />
+        <div className="hidden md:grid md:grid-cols-3 gap-6 md:px-12 lg:px-20">
+          {reviews.map((review) => (
+            <div key={review.id} className="rounded-2xl border border-border bg-secondary/30 p-6">
+              <div className="flex items-center gap-1 mb-4">
+                {Array.from({ length: review.rating }).map((_, i) => (
+                  <Star key={i} size={14} className="fill-foreground text-foreground" />
+                ))}
               </div>
-
-              {/* Content */}
-              <div className="py-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium leading-snug text-foreground">
-                      {accessory.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {accessory.description}
-                    </p>
-                  </div>
-                  <span className="font-medium text-foreground text-2xl">
-                    {accessory.price}
-                  </span>
-                </div>
-              </div>
+              <p className="text-sm leading-relaxed text-foreground mb-4">
+                &ldquo;{review.text}&rdquo;
+              </p>
+              <p className="text-xs font-medium text-muted-foreground">{review.name}</p>
             </div>
           ))}
         </div>
