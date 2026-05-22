@@ -1,52 +1,55 @@
 "use client";
 
 import { FadeImage } from "@/components/fade-image";
-
-const features = [
-  {
-    title: "Pneuservis a Runflat do 22\"",
-    description: "Pneuservis",
-    image: "/images/service-tires.jpg",
-  },
-  {
-    title: "Servis klimatizácie",
-    description: "Klimatizácia",
-    image: "/images/service-ac.jpg",
-  },
-  {
-    title: "Príprava na STK/EK",
-    description: "Technická kontrola",
-    image: "/images/service-stk.jpg",
-  },
-  {
-    title: "Rýchloservis pre taxíky",
-    description: "Fleet servis",
-    image: "/images/service-taxi.jpg",
-  },
-  {
-    title: "Diagnostika vozidla",
-    description: "Elektronika",
-    image: "/images/service-diagnostics.jpg",
-  },
-  {
-    title: "Výmena oleja a filtrov",
-    description: "Údržba",
-    image: "/images/service-oil.jpg",
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export function FeaturedProductsSection() {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      title: t("services.tires.title"),
+      description: t("services.tires.desc"),
+      image: "/images/service-tires.jpg",
+    },
+    {
+      title: t("services.ac.title"),
+      description: t("services.ac.desc"),
+      image: "/images/service-ac.jpg",
+    },
+    {
+      title: t("services.stk.title"),
+      description: t("services.stk.desc"),
+      image: "/images/service-stk.jpg",
+    },
+    {
+      title: t("services.taxi.title"),
+      description: t("services.taxi.desc"),
+      image: "/images/service-taxi.jpg",
+    },
+    {
+      title: t("services.diagnostics.title"),
+      description: t("services.diagnostics.desc"),
+      image: "/images/service-diagnostics.jpg",
+    },
+    {
+      title: t("services.oil.title"),
+      description: t("services.oil.desc"),
+      image: "/images/service-oil.jpg",
+    },
+  ];
+
   return (
     <section id="services" className="bg-background">
       {/* Section Title */}
       <div className="px-6 py-20 text-center md:px-12 md:py-28 lg:px-20 lg:py-32 lg:pb-20">
-        <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl lg:text-5xl">
-          Kompletný servis.
+        <h2 className="text-3xl font-medium tracking-tight text-foreground md:text-4xl lg:text-5xl whitespace-pre-line">
+          {t("services.title")}
           <br />
-          Rýchlo a spoľahlivo.
+          {t("services.subtitle")}
         </h2>
-        <p className="mx-auto mt-6 max-w-md text-sm text-muted-foreground">
-          Naše služby
+        <p className="mx-auto mt-6 max-w-md text-sm text-muted-foreground uppercase tracking-widest">
+          {t("services.badge")}
         </p>
       </div>
 
@@ -84,3 +87,4 @@ export function FeaturedProductsSection() {
     </section>
   );
 }
+

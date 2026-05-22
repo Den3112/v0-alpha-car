@@ -2,24 +2,25 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLanguage } from "@/lib/language-context";
 
 export function GallerySection() {
+  const { t } = useLanguage();
   const galleryRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [sectionHeight, setSectionHeight] = useState("100vh");
   const [translateX, setTranslateX] = useState(0);
   const rafRef = useRef<number | null>(null);
-  const lastScrollRef = useRef(0);
 
   const images = [
-    { src: "/images/gallery-1.jpg", alt: "Oprava motora" },
-    { src: "/images/gallery-2.jpg", alt: "Geometria a vyváženie kolies" },
-    { src: "/images/gallery-3.jpg", alt: "Moderná autoservisná dielňa" },
-    { src: "/images/gallery-4.jpg", alt: "Oprava brzdového systému" },
-    { src: "/images/gallery-5.jpg", alt: "Pneuservis a montáž pneumatík" },
-    { src: "/images/gallery-6.jpg", alt: "Servis elektromobilov" },
-    { src: "/images/service-diagnostics.jpg", alt: "Počítačová diagnostika" },
-    { src: "/images/service-ac.jpg", alt: "Servis klimatizácie" },
+    { src: "/images/gallery-1.jpg", alt: t("gallery.engine") },
+    { src: "/images/gallery-2.jpg", alt: t("gallery.geometry") },
+    { src: "/images/gallery-3.jpg", alt: t("gallery.workshop") },
+    { src: "/images/gallery-4.jpg", alt: t("gallery.brakes") },
+    { src: "/images/gallery-5.jpg", alt: t("gallery.tires") },
+    { src: "/images/gallery-6.jpg", alt: t("gallery.electric") },
+    { src: "/images/service-diagnostics.jpg", alt: t("gallery.diagnostics") },
+    { src: "/images/service-ac.jpg", alt: t("gallery.ac") },
   ];
 
   // Calculate section height based on content width
@@ -122,7 +123,7 @@ export function GallerySection() {
               >
                 <Image
                   src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
+                  alt={image.alt || "Alpha Car Service"}
                   fill
                   className="object-cover"
                   priority={index < 3}
@@ -135,3 +136,4 @@ export function GallerySection() {
     </section>
   );
 }
+

@@ -1,29 +1,37 @@
 "use client";
 
 import Link from "next/link";
-
-const footerLinks = {
-  explore: [
-    { label: "Služby", href: "#services" },
-    { label: "Galéria", href: "#gallery" },
-    { label: "Hodnotenia", href: "#contact" },
-    { label: "Kontakt", href: "#contact" },
-  ],
-  services: [
-    { label: "Pneuservis", href: "#services" },
-    { label: "Servis klimatizácie", href: "#services" },
-    { label: "Príprava na STK/EK", href: "#services" },
-    { label: "Rýchloservis taxíky", href: "#services" },
-  ],
-  contact: [
-    { label: "Majerská 42, Bratislava", href: "#contact" },
-    { label: "+421 950 261 896", href: "tel:+421950261896" },
-    { label: "Po–Pi: 7:00–18:00", href: "#contact" },
-    { label: "So: 8:00–13:00", href: "#contact" },
-  ],
-};
+import { useLanguage } from "@/lib/language-context";
 
 export function FooterSection() {
+  const { t, language } = useLanguage();
+
+  const exploreLabels = {
+    services: { sk: "Služby", en: "Services", ru: "Услуги" },
+    gallery: { sk: "Galéria", en: "Gallery", ru: "Галерея" },
+    reviews: { sk: "Hodnotenia", en: "Reviews", ru: "Отзывы" },
+    contact: { sk: "Kontakt", en: "Contact", ru: "Контакты" },
+  };
+
+  const exploreLinks = [
+    { label: exploreLabels.services[language], href: "#services" },
+    { label: exploreLabels.gallery[language], href: "#gallery" },
+    { label: exploreLabels.reviews[language], href: "#contact" },
+    { label: exploreLabels.contact[language], href: "#contact" },
+  ];
+
+  const servicesList = (t("footer.servicesList") as string[]) || [];
+  const servicesLinks = servicesList.map((label) => ({
+    label,
+    href: "#services",
+  }));
+
+  const contactLinks = [
+    { label: t("editorial.address"), href: "#contact" },
+    { label: t("editorial.phone"), href: `tel:${t("editorial.phone").replace(/\s+/g, "")}` },
+    { label: t("editorial.hours"), href: "#contact" },
+  ];
+
   return (
     <footer className="bg-background">
       {/* Main Footer Content */}
@@ -35,16 +43,16 @@ export function FooterSection() {
               ALPHA CAR SERVICE
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Profesionálny autoservis v Bratislave – Vrakuňa. Pneuservis, klimatizácia, STK/EK, rýchloservis pre taxíky.
+              {t("footer.desc")}
             </p>
           </div>
 
           {/* Navigate */}
           <div>
-            <h4 className="mb-4 text-sm font-medium text-foreground">Navigácia</h4>
+            <h4 className="mb-4 text-sm font-medium text-foreground">{t("footer.navTitle")}</h4>
             <ul className="space-y-3">
-              {footerLinks.explore.map((link) => (
-                <li key={link.label}>
+              {exploreLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -58,10 +66,10 @@ export function FooterSection() {
 
           {/* Services */}
           <div>
-            <h4 className="mb-4 text-sm font-medium text-foreground">Služby</h4>
+            <h4 className="mb-4 text-sm font-medium text-foreground">{t("footer.servicesTitle")}</h4>
             <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.label}>
+              {servicesLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -75,10 +83,10 @@ export function FooterSection() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-sm font-medium text-foreground">Kontakt</h4>
+            <h4 className="mb-4 text-sm font-medium text-foreground">{t("footer.contactTitle")}</h4>
             <ul className="space-y-3">
-              {footerLinks.contact.map((link) => (
-                <li key={link.label}>
+              {contactLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -96,7 +104,7 @@ export function FooterSection() {
       <div className="border-t border-border px-6 py-6 md:px-12 lg:px-20">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-xs text-muted-foreground">
-            2026 Alpha Car Service. Všetky práva vyhradené.
+            © {new Date().getFullYear()} {t("footer.rights")}
           </p>
 
           {/* Social Links */}
@@ -114,12 +122,12 @@ export function FooterSection() {
               Instagram
             </Link>
             <Link
-              href="https://www.zlatafirma.sk"
+              href="https://maps.app.goo.gl/wKwiUSsgWv4a7PsEA"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
-              Zlatá Firma
+              Google Maps
             </Link>
           </div>
         </div>
