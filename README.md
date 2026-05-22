@@ -14,22 +14,22 @@ A high-performance, premium web application for **Alpha Car Service**, a profess
 
 Following a comprehensive performance and responsiveness audit, the application implements elite-standard web development practices:
 
-*   **🎬 Scroll-Driven Bento Grid (Hero & Technology):** Cinematic scroll animation where the main center banner dynamically expands and rounds while side interactive bento columns slide in.
-*   **📱 Pristine Mobile Responsiveness:** Bento layouts dynamically adapt for mobile viewports (`isMobile < 1024px`), hiding narrow side columns via `display: none` and scaling the main visual banner to 100% width for perfect legibility.
-*   **🛡️ Scroll Overflow & Page Shift Protection:** Root sections are secured with strict `overflow-hidden` constraints, accompanied by `overflow-x-hidden` base rules on both `html` and `body` nodes. This guarantees a clean layout with zero side-scrolling shifts.
-*   **⚡ Smart Cached Image Hydration:** A custom `FadeImage` wrapper verified by a React `useRef` directly tracks the native HTML Image `.complete` attribute on mount. This prevents browser-cached images from locking into a hidden state (`opacity-0`).
-*   **📍 Integrated Contrast Map Embed:** A custom contrast-filtered map widget for Majerská 42, styled to match the dark theme for cohesive page blending.
+* **🎬 Scroll-Driven Bento Grid (Hero & Technology):** Cinematic scroll animation where the main center banner dynamically expands and rounds while side interactive bento columns slide in.
+* **📱 Pristine Mobile Responsiveness:** Bento layouts dynamically adapt for mobile viewports (`isMobile < 1024px`), hiding narrow side columns via `display: none` and scaling the main visual banner to 100% width for perfect legibility.
+* **🛡️ Scroll Overflow & Page Shift Protection:** Root sections are secured with strict `overflow-hidden` constraints, accompanied by `overflow-x-hidden` base rules on both `html` and `body` nodes. This guarantees a clean layout with zero side-scrolling shifts.
+* **⚡ Smart Cached Image Hydration:** A custom `FadeImage` wrapper verified by a React `useRef` directly tracks the native HTML Image `.complete` attribute on mount. This prevents browser-cached images from locking into a hidden state (`opacity-0`).
+* **📍 Integrated Contrast Map Embed:** A custom contrast-filtered map widget for Majerská 42, styled to match the dark theme for cohesive page blending.
 
 ---
 
 ## 🛠️ Technology Stack
 
-*   **Core Framework:** [Next.js 16](https://nextjs.org) (App Router, Turbopack Compiler support)
-*   **Frontend Engine:** [React 19](https://react.dev)
-*   **Style Engine:** [Tailwind CSS v4.0](https://tailwindcss.com) (high-speed native build compilation)
-*   **Icon Library:** [Lucide React](https://lucide.dev)
-*   **Core Analytics:** [Vercel Analytics](https://vercel.com/analytics) (native Core Web Vitals monitoring)
-*   **CI/CD Pipeline:** [GitHub Actions](https://github.com/features/actions) & [Vercel Deployment Pipelines](https://vercel.com)
+* **Core Framework:** [Next.js 16](https://nextjs.org) (App Router, Turbopack Compiler support)
+* **Frontend Engine:** [React 19](https://react.dev)
+* **Style Engine:** [Tailwind CSS v4.0](https://tailwindcss.com) (high-speed native build compilation)
+* **Icon Library:** [Lucide React](https://lucide.dev)
+* **Core Analytics:** [Vercel Analytics](https://vercel.com/analytics) (native Core Web Vitals monitoring)
+* **CI/CD Pipeline:** [GitHub Actions](https://github.com/features/actions) & [Vercel Deployment Pipelines](https://vercel.com)
 
 ---
 
@@ -38,25 +38,32 @@ Following a comprehensive performance and responsiveness audit, the application 
 To run the project locally, ensure you have **Node.js v22+** and the **pnpm** package manager installed.
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/Den3112/v0-alpha-car.git
 cd v0-alpha-car
 ```
 
 ### 2. Install Dependencies
+
 Force fetch platform-specific native compilation assets (including the native Tailwind compiler binary):
+
 ```bash
 pnpm install --force
 ```
 
 ### 3. Start the Development Server
+
 ```bash
 pnpm dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) on your local browser.
 
 ### 4. Build Production Bundle
+
 To execute TypeScript validation and compile the production build:
+
 ```bash
 pnpm build
 ```
@@ -66,6 +73,7 @@ pnpm build
 ## ⚙️ Continuous Integration (CI)
 
 A structured automatic GitHub Actions workflow (`.github/workflows/ci.yml`) triggers on push and pull requests targeting the `main` branch to perform:
+
 1. Virtual container bootstrapping using Ubuntu.
 2. pnpm dependency caching for high-speed runs.
 3. Native module installation.
