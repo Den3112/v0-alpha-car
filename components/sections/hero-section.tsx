@@ -2,40 +2,42 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-const word = "ALPHA";
-
-const sideImages = [
-  {
-    src: "/images/side-1.jpg",
-    alt: "Kontrola vozidla na zdviháku",
-    position: "left",
-    span: 1,
-  },
-  {
-    src: "/images/side-2.jpg",
-    alt: "Výmena kolies",
-    position: "left",
-    span: 1,
-  },
-  {
-    src: "/images/side-3.jpg",
-    alt: "Kontrola brzdového systému",
-    position: "right",
-    span: 1,
-  },
-  {
-    src: "/images/side-4.jpg",
-    alt: "Kontrola motora",
-    position: "right",
-    span: 1,
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export function HeroSection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  const word = t("hero.title") || "ALPHA";
+
+  const sideImages = [
+    {
+      src: "/images/side-1.jpg",
+      alt: t("gallery.workshop"),
+      position: "left",
+      span: 1,
+    },
+    {
+      src: "/images/side-2.jpg",
+      alt: t("gallery.tires"),
+      position: "left",
+      span: 1,
+    },
+    {
+      src: "/images/side-3.jpg",
+      alt: t("gallery.brakes"),
+      position: "right",
+      span: 1,
+    },
+    {
+      src: "/images/side-4.jpg",
+      alt: t("gallery.engine"),
+      position: "right",
+      span: 1,
+    },
+  ];
 
   useEffect(() => {
     const checkMobile = () => {
@@ -85,6 +87,8 @@ export function HeroSection() {
   // Vertical offset for side columns to move them up on mobile
   const sideTranslateY = -(imageProgress * 15); // Move up by 15% when fully expanded
 
+  const whatsappUrl = `https://wa.me/421950261896?text=${encodeURIComponent(t("whatsappTemplates.booking"))}`;
+
   return (
     <section ref={sectionRef} className="relative bg-background">
       {/* Sticky container for scroll animation */}
@@ -118,7 +122,7 @@ export function HeroSection() {
                 >
                   <Image
                     src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
+                    alt={img.alt || "Alpha Car Service"}
                     fill
                     className="object-cover"
                   />
@@ -189,7 +193,7 @@ export function HeroSection() {
                 >
                   <Image
                     src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
+                    alt={img.alt || "Alpha Car Service"}
                     fill
                     className="object-cover"
                   />
@@ -206,23 +210,26 @@ export function HeroSection() {
 
       {/* Tagline Section */}
       <div className="px-6 pt-32 pb-28 md:pt-48 md:px-12 md:pb-36 lg:px-20 lg:pt-56 lg:pb-44">
-        <p className="mx-auto max-w-2xl text-center text-2xl leading-relaxed text-muted-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug">
-          Profesionálny autoservis
+        <p className="mx-auto max-w-2xl text-center text-2xl leading-relaxed text-muted-foreground md:text-3xl lg:text-[2.5rem] lg:leading-snug whitespace-pre-line">
+          {t("hero.tagline1")}
           <br />
-          v Bratislave.
+          {t("hero.tagline2")}
         </p>
         <p className="mx-auto mt-4 max-w-lg text-center text-lg leading-relaxed text-muted-foreground">
-          Говорим на вашем языке
+          {t("hero.languageSupport")}
         </p>
         <div className="mt-10 flex justify-center">
           <a
-            href="#book"
-            className="rounded-full bg-foreground px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-foreground px-8 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80 block"
           >
-            Objednať termín
+            {t("hero.book")}
           </a>
         </div>
       </div>
     </section>
   );
 }
+

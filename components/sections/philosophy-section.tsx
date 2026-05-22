@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLanguage } from "@/lib/language-context";
 
 export function PhilosophySection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [alpineTranslateX, setAlpineTranslateX] = useState(-100);
   const [forestTranslateX, setForestTranslateX] = useState(100);
@@ -66,7 +68,7 @@ export function PhilosophySection() {
               style={{ opacity: titleOpacity }}
             >
               <h2 className="text-[10vw] font-medium leading-[0.95] tracking-tighter text-foreground md:text-[8vw] lg:text-[6vw] text-center px-6">
-                Pneuservis & Klimatizácia.
+                {t("philosophy.title")}
               </h2>
             </div>
 
@@ -84,13 +86,13 @@ export function PhilosophySection() {
               >
                 <Image
                   src="/images/service-tires.jpg"
-                  alt="Pneuservis a Runflat do 22"
+                  alt={t("philosophy.badgeTires")}
                   fill
                   className="object-cover"
                 />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Pneuservis a Runflat do 22&quot;
+                    {t("philosophy.badgeTires")}
                   </span>
                 </div>
               </div>
@@ -107,13 +109,13 @@ export function PhilosophySection() {
               >
                 <Image
                   src="/images/service-ac.jpg"
-                  alt="Servis klimatizácie"
+                  alt={t("philosophy.badgeAc")}
                   fill
                   className="object-cover"
                 />
                 <div className="absolute bottom-6 left-6">
                   <span className="backdrop-blur-md px-4 py-2 text-sm font-medium rounded-full bg-[rgba(255,255,255,0.2)] text-white">
-                    Servis klimatizácie
+                    {t("philosophy.badgeAc")}
                   </span>
                 </div>
               </div>
@@ -126,14 +128,14 @@ export function PhilosophySection() {
       <div className="px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-36 lg:pb-14">
         <div className="text-center">
           <p className="text-xs uppercase tracking-widest text-muted-foreground">
-            Naše služby
+            {t("philosophy.subtitle")}
           </p>
           <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
-            Komplexný autoservis pre osobné vozidlá, SUV, taxíky a firemné flotily.
-            Rýchle termíny, odborný prístup, transparentné ceny.
+            {t("philosophy.description")}
           </p>
         </div>
       </div>
     </section>
   );
 }
+

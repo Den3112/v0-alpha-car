@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/lib/language-context";
 
 function ScrollRevealText({ text }: { text: string }) {
   const containerRef = useRef<HTMLParagraphElement>(null);
@@ -58,39 +59,40 @@ function ScrollRevealText({ text }: { text: string }) {
   );
 }
 
-const sideImages = [
-  {
-    src: "/images/gallery-1.jpg",
-    alt: "Oprava motora",
-    position: "left",
-    span: 1,
-  },
-  {
-    src: "/images/gallery-2.jpg",
-    alt: "Geometria kolies",
-    position: "left",
-    span: 1,
-  },
-  {
-    src: "/images/gallery-4.jpg",
-    alt: "Oprava brzdového systému",
-    position: "right",
-    span: 1,
-  },
-  {
-    src: "/images/gallery-5.jpg",
-    alt: "Montáž pneumatík",
-    position: "right",
-    span: 1,
-  },
-];
-
 export function TechnologySection() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const textSectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [textProgress, setTextProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  const sideImages = [
+    {
+      src: "/images/gallery-1.jpg",
+      alt: t("gallery.engine"),
+      position: "left",
+      span: 1,
+    },
+    {
+      src: "/images/gallery-2.jpg",
+      alt: t("gallery.geometry"),
+      position: "left",
+      span: 1,
+    },
+    {
+      src: "/images/gallery-4.jpg",
+      alt: t("gallery.brakes"),
+      position: "right",
+      span: 1,
+    },
+    {
+      src: "/images/gallery-5.jpg",
+      alt: t("gallery.tires"),
+      position: "right",
+      span: 1,
+    },
+  ];
 
   useEffect(() => {
     const checkMobile = () => {
@@ -101,7 +103,8 @@ export function TechnologySection() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
   
-  const descriptionText = "Alpha Car Service je váš spoľahlivý partner pre komplexnú starostlivosť o vozidlo v Bratislave. Naši skúsení mechanici využívajú moderné diagnostické zariadenia a originálne náhradné diely, aby vaše auto vždy fungovalo bezchybne. Hovoríme po slovensky aj po rusky — komunikácia bez bariér.";
+  const descriptionText = t("technology.description") || "";
+  const revealWords = t("technology.words") || ["Kvalita", "Stretáva", "Rýchlosť."];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -154,9 +157,6 @@ export function TechnologySection() {
   const borderRadius = imageProgress * 24; // 0px to 24px
   const gap = isMobile ? 0 : (imageProgress * 16); // 0px to 16px
 
-  // Calculate grayscale for text section based on textProgress
-  const grayscaleAmount = Math.round((1 - textProgress) * 100);
-
   return (
     <section ref={sectionRef} className="relative bg-foreground">
       {/* Sticky container for scroll animation */}
@@ -190,7 +190,7 @@ export function TechnologySection() {
                 >
                   <Image
                     src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
+                    alt={img.alt || "Alpha Car Service"}
                     fill
                     className="object-cover"
                   />
@@ -221,7 +221,7 @@ export function TechnologySection() {
                 className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
               >
                 <h2 className="max-w-3xl font-medium leading-tight tracking-tight text-white md:text-5xl lg:text-7xl text-5xl">
-                  {["Kvalita", "Stretáva", "Rýchlosť."].map((word, index) => {
+                  {revealWords.map((word: string, index: number) => {
                     // Each word fades out sequentially based on scrollProgress
                     const wordFadeStart = index * 0.07; // Technology: 0, Meets: 0.07, Wilderness: 0.14
                     const wordFadeEnd = wordFadeStart + 0.07;
@@ -237,7 +237,7 @@ export function TechnologySection() {
                           opacity: wordOpacity,
                           filter: `blur(${wordBlur}px)`,
                           transition: 'opacity 0.1s linear, filter 0.1s linear',
-                          marginRight: index < 2 ? '0.3em' : '0',
+                          marginRight: index < revealWords.length - 1 ? '0.3em' : '0',
                         }}
                       >
                         {word}
@@ -271,7 +271,7 @@ export function TechnologySection() {
                 >
                   <Image
                     src={img.src || "/placeholder.svg"}
-                    alt={img.alt}
+                    alt={img.alt || "Alpha Car Service"}
                     fill
                     className="object-cover"
                   />
@@ -291,9 +291,6 @@ export function TechnologySection() {
         ref={textSectionRef}
         className="relative overflow-hidden bg-background px-6 py-24 md:px-12 md:py-32 lg:px-20 lg:py-40"
       >
-        {/* Background Image with Grayscale Filter */}
-        
-
         {/* Text Content */}
         <div className="relative z-10 mx-auto max-w-4xl">
           <ScrollRevealText text={descriptionText} />
@@ -302,3 +299,4 @@ export function TechnologySection() {
     </section>
   );
 }
+
