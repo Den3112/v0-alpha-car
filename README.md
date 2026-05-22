@@ -1,35 +1,75 @@
-# v0-alpha-car
+# 🏎️ Alpha Car Service | Премиальный веб-сайт автосервиса
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+[![CI Status](https://github.com/Den3112/v0-alpha-car/actions/workflows/ci.yml/badge.svg)](https://github.com/Den3112/v0-alpha-car/actions/workflows/ci.yml)
+[![Next.js Version](https://img.shields.io/badge/Next.js-16.0.10-black?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React Version](https://img.shields.io/badge/React-19.0-blue?logo=react&logoColor=white)](https://react.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind--CSS-v4.0-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel&logoColor=white)](https://v0-alpha-car.vercel.app)
 
-## Built with v0
+Высокотехнологичный и премиальный веб-сайт для профессионального автосервиса **Alpha Car Service** в Братиславе (Вракуня). Проект спроектирован по передовым мировым стандартам UX/UI дизайна, содержит плавные кинематографичные анимации, полную двуязычную адаптацию (словацкий/русский) и оптимизирован для быстрой загрузки.
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+---
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_GkjX5kG6KdPegZk4Xn3wdoioWLRl)
+## ✨ Ключевые особенности и визуальный аудит
 
-## Getting Started
+Сайт прошёл глубокий аудит производительности и адаптивности, в ходе которого были внедрены следующие передовые практики:
 
-First, run the development server:
+*   **🎬 Анимированный Bento Grid (Hero & Технологии):** Прогрессивный скролл-эффект, при котором центральный баннер плавно масштабируется, а боковые интерактивные колонки въезжают на свои места.
+*   **📱 Идеальная мобильная отзывчивость:** Bento-сетки динамически перестраиваются на смартфонах (`isMobile < 1024px`), скрывая второстепенные узкие элементы и предоставляя центральному баннеру 100% ширины для идеальной читаемости.
+*   **🛡️ Нулевой сдвиг макета (Zero Page Shift):** Секции оснащены строгим свойством `overflow-hidden` и `overflow-x-hidden` на уровне `html` и `body`. Это предотвращает горизонтальную прокрутку и боковой люфт экрана при горизонтальных анимациях на мобильных телефонах.
+*   **⚡ Умная гидратация кэшированных изображений:** Кастомный компонент `FadeImage` проверяет состояние загрузки элемента `.complete` через React `useRef` до инициализации обработчика `onLoad`. Это защищает закэшированные изображения от бесконечного зависания в невидимом состоянии (`opacity-0`).
+*   **📍 Интегрированная темная интерактивная карта:** Стилизованная под темную тему Google-карта Majerská 42 с повышенной контрастностью и фильтром `grayscale` для бесшовной интеграции в интерфейс.
 
+---
+
+## 🛠️ Технологический стек
+
+Проект построен на ультрасовременном стеке технологий:
+
+*   **Ядро:** [Next.js 16](https://nextjs.org) (App Router, поддержка компилятора Turbopack)
+*   **Интерфейс:** [React 19](https://react.dev) (компоненты на основе хуков)
+*   **Стилизация:** [Tailwind CSS v4.0](https://tailwindcss.com) (новый нативный CSS-движок сборки без лишнего PostCSS-оверхеда)
+*   **Иконки:** [Lucide React](https://lucide.dev)
+*   **Аналитика:** [Vercel Analytics](https://vercel.com/analytics) (нативный трекинг трафика и показателей Web Vitals)
+*   **CI/CD:** [GitHub Actions](https://github.com/features/actions) & [Vercel Deployment Pipelines](https://vercel.com)
+
+---
+
+## 🚀 Быстрый старт (Локальный запуск)
+
+Для запуска проекта локально вам понадобятся установленные **Node.js v22+** и пакетный менеджер **pnpm**.
+
+### 1. Клонирование репозитория
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/Den3112/v0-alpha-car.git
+cd v0-alpha-car
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Установка зависимостей
+Установите платформозависимые бинарники (включая нативный плагин Tailwind CSS v4) с помощью флага `--force`:
+```bash
+pnpm install --force
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Запуск сервера разработки
+```bash
+pnpm dev
+```
+Откройте [http://localhost:3000](http://localhost:3000) в браузере для просмотра.
 
-## Learn More
+### 4. Сборка оптимизированного продакшн-билда
+Для проверки компиляции и типов запустите команду:
+```bash
+pnpm build
+```
 
-To learn more, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+## ⚙️ Непрерывная интеграция (CI)
 
-<a href="https://v0.app/chat/api/kiro/clone/Den3112/v0-alpha-car" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+В репозитории настроен автоматический конвейер проверки **GitHub Actions** (`.github/workflows/ci.yml`), который при каждом обновлении кода выполняет:
+1. Инициализацию окружения на базе Ubuntu с кэшированием зависимостей `pnpm`.
+2. Принудительную установку пакетов.
+3. Проверочную сборку проекта (`next build`) для контроля синтаксиса и совместимости с Vercel.
+
+Каждое успешное слияние с веткой `main` автоматически деплоится на живой хостинг Vercel.
