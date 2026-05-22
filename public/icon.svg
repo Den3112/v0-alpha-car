@@ -1,21 +1,14 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: #0A0A0A; }
-      .logo-color { fill: #FFFFFF; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: #FAFAFA; }
-      .logo-color { fill: #0A0A0A; }
-    }
-  </style>
-  <rect class="background" width="180" height="180" rx="40" />
-  <g transform="translate(40, 40) scale(1)">
-    <!-- Left leg of letter A -->
-    <path class="logo-color" d="M30 80 L50 20 L58 20 L38 80 Z" />
-    <!-- Right leg of letter A -->
-    <path class="logo-color" d="M70 80 L50 20 L42 20 L62 80 Z" opacity="0.8" />
-    <!-- Premium red accent stripe -->
-    <path d="M32 58 L68 58" stroke="#EF4444" stroke-width="8" stroke-linecap="round" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f0f1e"/>
+    </linearGradient>
+  </defs>
+  <!-- Shield -->
+  <path d="M32 3 L58 13 L58 32 Q58 50 32 61 Q6 50 6 32 L6 13 Z" fill="url(#bg)" stroke="#2a2a4a" stroke-width="1"/>
+  <!-- Letter A -->
+  <path d="M22 44 L32 17 L42 44" stroke="white" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  <!-- Red crossbar -->
+  <rect x="25" y="32" width="14" height="4" fill="#E53E3E"/>
 </svg>
