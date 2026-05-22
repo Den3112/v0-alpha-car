@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
@@ -34,40 +35,24 @@ export function Header() {
         {/* Logo */}
         <Link
           href="#"
-          className="group flex items-center gap-2.5 transition-colors duration-300"
+          className="group flex items-center gap-3 transition-all duration-300"
         >
-          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-foreground/5 dark:bg-white/5 border border-foreground/10 dark:border-white/10 transition-all duration-300 group-hover:border-red-500/50 group-hover:bg-red-500/5">
-            <svg
-              className="w-5 h-5 text-foreground dark:text-white transition-transform duration-300 group-hover:scale-110"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Left leg of letter A */}
-              <path
-                d="M30 80 L50 20 L58 20 L38 80 Z"
-                fill="currentColor"
-              />
-              {/* Right leg of letter A */}
-              <path
-                d="M70 80 L50 20 L42 20 L62 80 Z"
-                fill="currentColor"
-                opacity="0.8"
-              />
-              {/* Premium red accent stripe */}
-              <path
-                d="M32 58 L68 58"
-                stroke="#EF4444"
-                strokeWidth="8"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Shield Logo Icon */}
+          <div className="relative w-9 h-9 transition-transform duration-300 group-hover:scale-105 drop-shadow-lg">
+            <Image
+              src="/logo-alpha.svg"
+              alt="Alpha Car Service logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
-          <div className="flex flex-col">
-            <span className={`font-extrabold tracking-widest text-sm md:text-base leading-none transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}>
+          {/* Brand Text */}
+          <div className="flex flex-col leading-none">
+            <span className={`font-black tracking-[0.18em] text-[13px] md:text-[15px] uppercase transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}>
               ALPHA
             </span>
-            <span className={`font-bold tracking-[0.22em] text-[8px] uppercase leading-none mt-1 transition-colors duration-300 ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>
+            <span className={`font-semibold tracking-[0.3em] text-[7px] md:text-[8px] uppercase transition-colors duration-300 ${isScrolled ? "text-red-500" : "text-red-400"}`}>
               Car Service
             </span>
           </div>
