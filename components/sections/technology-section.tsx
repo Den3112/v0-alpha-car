@@ -90,6 +90,16 @@ export function TechnologySection() {
   const textSectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [textProgress, setTextProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   
   const descriptionText = "Alpha Car Service je váš spoľahlivý partner pre komplexnú starostlivosť o vozidlo v Bratislave. Naši skúsení mechanici využívajú moderné diagnostické zariadenia a originálne náhradné diely, aby vaše auto vždy fungovalo bezchybne. Hovoríme po slovensky aj po rusky — komunikácia bez bariér.";
 
@@ -135,14 +145,14 @@ export function TechnologySection() {
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
   
   // Smooth interpolations
-  const centerWidth = 100 - (imageProgress * 58); // 100% to 42%
+  const centerWidth = isMobile ? 100 : (100 - (imageProgress * 58)); // 100% to 42%
   const centerHeight = 100 - (imageProgress * 30); // 100% to 70%
-  const sideWidth = imageProgress * 22; // 0% to 22%
-  const sideOpacity = imageProgress;
+  const sideWidth = isMobile ? 0 : (imageProgress * 22); // 0% to 22%
+  const sideOpacity = isMobile ? 0 : imageProgress;
   const sideTranslateLeft = -100 + (imageProgress * 100); // -100% to 0%
   const sideTranslateRight = 100 - (imageProgress * 100); // 100% to 0%
   const borderRadius = imageProgress * 24; // 0px to 24px
-  const gap = imageProgress * 16; // 0px to 16px
+  const gap = isMobile ? 0 : (imageProgress * 16); // 0px to 16px
 
   // Calculate grayscale for text section based on textProgress
   const grayscaleAmount = Math.round((1 - textProgress) * 100);
@@ -160,12 +170,13 @@ export function TechnologySection() {
             
             {/* Left Column */}
             <div 
-              className="flex flex-col will-change-transform"
+              className="flex flex-col will-change-transform h-full"
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
                 transform: `translateX(${sideTranslateLeft}%)`,
                 opacity: sideOpacity,
+                display: isMobile ? "none" : "flex",
               }}
             >
               {sideImages.filter(img => img.position === "left").map((img, idx) => (
@@ -240,12 +251,13 @@ export function TechnologySection() {
 
             {/* Right Column */}
             <div 
-              className="flex flex-col will-change-transform"
+              className="flex flex-col will-change-transform h-full"
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
                 transform: `translateX(${sideTranslateRight}%)`,
                 opacity: sideOpacity,
+                display: isMobile ? "none" : "flex",
               }}
             >
               {sideImages.filter(img => img.position === "right").map((img, idx) => (

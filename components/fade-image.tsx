@@ -11,6 +11,13 @@ export function FadeImage({ className, fadeDelay = 0, ...props }: FadeImageProps
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +46,7 @@ export function FadeImage({ className, fadeDelay = 0, ...props }: FadeImageProps
     <div ref={ref} className="relative h-full w-full">
       <Image
         {...props}
+        ref={imgRef}
         className={`${className || ""} transition-all duration-700 ease-out ${
           isVisible && isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]"
         }`}

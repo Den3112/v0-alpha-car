@@ -35,6 +35,16 @@ const sideImages = [
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +73,14 @@ export function HeroSection() {
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
   
   // Smooth interpolations
-  const centerWidth = 100 - (imageProgress * 58); // 100% to 42%
+  const centerWidth = isMobile ? 100 : (100 - (imageProgress * 58)); // 100% to 42%
   const centerHeight = 100 - (imageProgress * 30); // 100% to 70%
-  const sideWidth = imageProgress * 22; // 0% to 22%
-  const sideOpacity = imageProgress;
+  const sideWidth = isMobile ? 0 : (imageProgress * 22); // 0% to 22%
+  const sideOpacity = isMobile ? 0 : imageProgress;
   const sideTranslateLeft = -100 + (imageProgress * 100); // -100% to 0%
   const sideTranslateRight = 100 - (imageProgress * 100); // 100% to 0%
   const borderRadius = imageProgress * 24; // 0px to 24px
-  const gap = imageProgress * 16; // 0px to 16px
+  const gap = isMobile ? 0 : (imageProgress * 16); // 0px to 16px
   
   // Vertical offset for side columns to move them up on mobile
   const sideTranslateY = -(imageProgress * 15); // Move up by 15% when fully expanded
@@ -88,12 +98,13 @@ export function HeroSection() {
             
             {/* Left Column */}
             <div 
-              className="flex flex-col will-change-transform"
+              className="flex flex-col will-change-transform h-full"
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
                 transform: `translateX(${sideTranslateLeft}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
+                display: isMobile ? "none" : "flex",
               }}
             >
               {sideImages.filter(img => img.position === "left").map((img, idx) => (
@@ -158,12 +169,13 @@ export function HeroSection() {
 
             {/* Right Column */}
             <div 
-              className="flex flex-col will-change-transform"
+              className="flex flex-col will-change-transform h-full"
               style={{
                 width: `${sideWidth}%`,
                 gap: `${gap}px`,
                 transform: `translateX(${sideTranslateRight}%) translateY(${sideTranslateY}%)`,
                 opacity: sideOpacity,
+                display: isMobile ? "none" : "flex",
               }}
             >
               {sideImages.filter(img => img.position === "right").map((img, idx) => (
